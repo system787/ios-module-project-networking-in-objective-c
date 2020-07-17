@@ -1,21 +1,25 @@
 //
-//  CurrentWeather.m
+//  DailyWeather.m
 //  DailyWeather
 //
-//  Created by Vincent Hoang on 7/15/20.
+//  Created by Vincent Hoang on 7/17/20.
 //  Copyright © 2020 Lambda, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "CurrentWeather.h"
+#import "DailyWeather.h"
 
-@implementation CurrentWeather
+@implementation DailyWeather
 
 - (instancetype)initWithTime:(NSTimeInterval *)time
                      summary:(NSString *)summary
                         icon:(NSString *)icon
+                 sunriseTime:(NSTimeInterval *)sunriseTime
+                  sunsetTime:(NSTimeInterval *)sunsetTime
            precipProbability:(NSNumber *)precipProbability
              precipIntensity:(NSNumber *)precipIntensity
+                  precipType:(NSString *)precipType
+              temperatureLow:(NSNumber *)temperatureLow
+             temperatureHigh:(NSNumber *)temperatureHigh
          apparentTemperature:(NSNumber *)apparentTemperature
                     humidity:(NSNumber *)humidity
                     pressure:(NSNumber *)pressure
@@ -23,13 +27,17 @@
                  windBearing:(NSNumber *)windBearing
                      uvIndex:(NSNumber *)uvIndex {
     self = [super init];
-    
     if (self) {
         _time = time;
         _summary = [summary copy];
         _icon = [icon copy];
+        _sunriseTime = sunriseTime;
+        _sunsetTime = sunsetTime;
         _precipProbability = precipProbability;
         _precipIntensity = precipIntensity;
+        _precipType = [precipType copy];
+        _temperatureLow = temperatureLow;
+        _temperatureHigh = temperatureHigh;
         _apparentTemperature = apparentTemperature;
         _humidity = humidity;
         _pressure = pressure;
@@ -42,7 +50,6 @@
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    
     NSNumber *time = dictionary[@"time"];
     
     if (!time) {
@@ -51,8 +58,13 @@
     
     NSString *summary = dictionary[@"summary"];
     NSString *icon = dictionary[@"icon"];
+    NSNumber *sunriseTime = dictionary[@"sunriseTime"];
+    NSNumber *sunsetTime = dictionary[@"sunsetTime"];
     NSNumber *precipProbability = dictionary[@"precipProbability"];
     NSNumber *precipIntensity = dictionary[@"precipIntensity"];
+    NSString *precipType = dictionary[@"precipType"];
+    NSNumber *temperatureLow = dictionary[@"temperatureLow"];
+    NSNumber *temperatureHigh = dictionary[@"temperatureHigh"];
     NSNumber *apparentTemperature = dictionary[@"apparentTemperature"];
     NSNumber *humidity = dictionary[@"humidity"];
     NSNumber *pressure = dictionary[@"pressure"];
@@ -61,6 +73,8 @@
     NSNumber *uvIndex = dictionary[@"uvIndex"];
     
     NSTimeInterval timeInterval = [time floatValue] / 1000.0;
+    NSTimeInterval sunriseInterval = [sunriseTime floatValue] / 1000.0;
+    NSTimeInterval sunsetInterval = [sunsetTime floatValue] / 1000.0;
     
     if ([summary isKindOfClass:[NSNull class]]) {
         summary = nil;
@@ -70,6 +84,14 @@
         icon = nil;
     }
     
+    if ([sunriseTime isKindOfClass:[NSNull class]]) {
+        sunriseTime = nil;
+    }
+    
+    if ([sunsetTime isKindOfClass:[NSNull class]]) {
+        sunsetTime = nil;
+    }
+    
     if ([precipProbability isKindOfClass:[NSNull class]]) {
         precipProbability = nil;
     }
@@ -77,7 +99,19 @@
     if ([precipIntensity isKindOfClass:[NSNull class]]) {
         precipIntensity = nil;
     }
-
+    
+    if ([precipType isKindOfClass:[NSNull class]]) {
+        precipType = nil;
+    }
+    
+    if ([temperatureLow isKindOfClass:[NSNull class]]) {
+        temperatureLow = nil;
+    }
+    
+    if ([temperatureHigh isKindOfClass:[NSNull class]]) {
+        temperatureHigh = nil;
+    }
+    
     if ([apparentTemperature isKindOfClass:[NSNull class]]) {
         apparentTemperature = nil;
     }
@@ -105,14 +139,20 @@
     return [self initWithTime:&timeInterval
                       summary:summary
                          icon:icon
+                  sunriseTime:&sunriseInterval
+                   sunsetTime:&sunsetInterval
             precipProbability:precipProbability
               precipIntensity:precipIntensity
+                   precipType:precipType
+               temperatureLow:temperatureLow
+              temperatureHigh:temperatureHigh
           apparentTemperature:apparentTemperature
                      humidity:humidity
                      pressure:pressure
                     windSpeed:windSpeed
                   windBearing:windBearing
                       uvIndex:uvIndex];
+    
 }
 
 @end

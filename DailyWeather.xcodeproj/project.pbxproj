@@ -35,6 +35,7 @@
 		BEF40A4224C19A950068E983 /* DailyWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD69315123FD905400C0DF09 /* DailyWeatherTests.m */; };
 		BEF40A4324C19B290068E983 /* LSIFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BD69316023FD90D000C0DF09 /* LSIFileHelper.m */; };
 		BEF40A4424C19B530068E983 /* CurrentWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF40A3324C01B8F0068E983 /* CurrentWeather.m */; };
+		BEF40A4724C1A4C70068E983 /* DailyWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF40A4624C1A4C70068E983 /* DailyWeather.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		BDFC8F7123FD999000A39B21 /* LSICardinalDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSICardinalDirection.m; sourceTree = "<group>"; };
 		BEF40A3224C01B8F0068E983 /* CurrentWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeather.h; sourceTree = "<group>"; };
 		BEF40A3324C01B8F0068E983 /* CurrentWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CurrentWeather.m; path = DailyWeather/Model/CurrentWeather.m; sourceTree = SOURCE_ROOT; };
+		BEF40A4524C1A4C70068E983 /* DailyWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyWeather.h; sourceTree = "<group>"; };
+		BEF40A4624C1A4C70068E983 /* DailyWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyWeather.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,8 @@
 			children = (
 				BEF40A3224C01B8F0068E983 /* CurrentWeather.h */,
 				BEF40A3324C01B8F0068E983 /* CurrentWeather.m */,
+				BEF40A4524C1A4C70068E983 /* DailyWeather.h */,
+				BEF40A4624C1A4C70068E983 /* DailyWeather.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF40A4724C1A4C70068E983 /* DailyWeather.m in Sources */,
 				BD69316E23FD912000C0DF09 /* LSISettingsTableVC.m in Sources */,
 				BD69316723FD90D100C0DF09 /* LSILog.m in Sources */,
 				BD69313723FD905200C0DF09 /* AppDelegate.m in Sources */,
